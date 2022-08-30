@@ -9,8 +9,21 @@ public class Customer {
     boolean sex;
     int age;
     public Customer(){
+        this("",null,"female",0);
     }
-    public Customer(String ID, String n, String s, int a){}
+    public Customer(String ID, String n, String s, int a){
+        if(a < 0){
+            a = 0;
+        }
+        if(s.toLowerCase().equals("male")){
+            this.sex = true;
+        } else if (s.toLowerCase().equals("female")) {
+            this.sex = false;
+        }
+        this.ID = ID;
+        this.name = n;
+        this.age = a;
+    }
     public void setID(String ID){
         this.ID = ID;
     }
@@ -18,7 +31,7 @@ public class Customer {
         this.name = name;
     }
     public void setSex(String sex){
-        if(sex.toLowerCase() == "male"){
+        if(sex.toLowerCase().equals("male")){
             this.sex = true;
         }
         else{
