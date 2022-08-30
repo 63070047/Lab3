@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class Customer {
-    String ID;
-    String name;
-    boolean sex;
-    int age;
+    private String ID;
+    private String name;
+    private boolean sex;
+    private int age;
     public Customer(){
         this("",null,"female",0);
     }
@@ -34,29 +34,27 @@ public class Customer {
         if(sex.toLowerCase().equals("male")){
             this.sex = true;
         }
-        else{
+        else if (sex.toLowerCase().equals("female")) {
             this.sex = false;
         }
     }
     public void setAge(int age){
         if(age < 0){
-            this.age = 0;
+            age = 0;
         }
-        else {
-            this.age = age;
-        }
+        this.age = age;
     }
 
-    public String getID(String ID){
+    public String getID(){
         return ID;
     }
-    public String getName(String name){
+    public String getName(){
         return name;
     }
-    public boolean getSex(boolean sex){
+    public boolean getSex(){
         return sex;
     }
-    public int getAge(int age){
+    public int getAge(){
         return age;
     }
 }

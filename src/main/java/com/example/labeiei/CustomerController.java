@@ -22,7 +22,50 @@ public class CustomerController {
     public List<Customer> getCustomers(){
         return this.customers;
     }
-//    public Customer getCustomerByID (String ID){
-//
-//    }
+    @RequestMapping(value = "/customerbyid/{id}")
+    public Customer getCustomerByID (@PathVariable("id") String ID){
+        for(int i=0;i<this.customers.size();i++){
+            if(this.customers.get(i).getID().equals(ID)){
+                return this.customers.get(i);
+            }
+        }
+        return null;
+    }
+    @RequestMapping(value = "/customerbyname/{name}")
+    public Customer getCustomerByName (@PathVariable("name") String n){
+        for(int i=0;i<this.customers.size();i++){
+            if(this.customers.get(i).getName().equals(n)){
+                return this.customers.get(i);
+            }
+        }
+        return null;
+    }
+    @RequestMapping(value="/customerDelByid/{id}", method = RequestMethod.DELETE)
+    public boolean delCustomerByID (@PathVariable("id") String ID){
+        for(int i=0;i<this.customers.size();i++){
+            if(this.customers.get(i).getID().equals(ID)){
+                this.customers.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    @RequestMapping(value = "/customerDelByname/{n}", method = RequestMethod.DELETE)
+    public boolean delCustomerByName(@PathVariable("n") String n){
+        for(int i=0;i<this.customers.size();i++){
+            if(this.customers.get(i).getID().equals(n)){
+                this.customers.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+    @RequestMapping(value = "/addCustomer", method = RequestMethod.GET)
+    public boolean addCustomer(@RequestParam("id") String ID,
+                               @RequestParam("name") String n,
+                               @RequestParam("sex") String s,
+                               @RequestParam("age") int a){
+        this.customers.add(new Customer(ID,n,s,a));
+        return true;
+    }
 }
