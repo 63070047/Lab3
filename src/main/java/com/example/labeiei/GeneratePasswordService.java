@@ -12,7 +12,7 @@ public class GeneratePasswordService {
     @RequestMapping(value = "/{name}.generate", method = RequestMethod.GET)
     public String generate(@PathVariable("name") String name){
         Random ran = new Random();
-        int randompwd = ran.nextInt(1000000);
+        int randompwd = ran.nextInt(1000000000);
         return "Hi " + name + "<br>" + "Your new password is " + randompwd;
     }
 }
