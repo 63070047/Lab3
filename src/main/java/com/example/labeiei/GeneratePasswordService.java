@@ -13,6 +13,6 @@ public class GeneratePasswordService {
     public String generate(@PathVariable("name") String name){
         Random ran = new Random();
         int randompwd = ran.nextInt(1000000);
-        return "Hi" + name + "<br>" + "Your new password is " + randompwd;
+        return "Hi " + name + "<br>" + "Your new password is " + randompwd;
     }
 }
